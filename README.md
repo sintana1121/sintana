@@ -8,14 +8,16 @@ SharePoint - サイト設計・リスト/ライブラリ構築
 Power Automate - 業務フロー自動化
 Microsoft Graph PowerShell - M365管理自動化
 業務の仕組み化 - 属人化解消・引継ぎ設計
+
 📦 公開リポジトリ
 リポジトリ	内容
 m365-admin-scripts	M365管理用PowerShellスクリプト
+
 📝 技術記事
 Qiita: @SintanaProduction
+
 💡 無料リソース
 「属人化ゼロの教科書」第1章 + AIプロンプト5選を無料配布中
-
 👉 https://sintana.site
 
 📫 Contact
