@@ -27,7 +27,7 @@ Install-Module Microsoft.Graph -Scope CurrentUser
 ### 2. スクリプトをダウンロード
 
 ```powershell
-git clone https://github.com/sintana1121/m365-admin-scripts.git
+git clone [https://github.com/sintana1121/m365-admin-scripts.git](https://github.com/sintana1121/sintana/blob/main/m365-admin-scripts/license/M365LicenseReport.ps1)
 ```
 
 または、各スクリプトを直接ダウンロードしてください。
