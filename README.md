@@ -1,6 +1,6 @@
-# sintana — M365 Admin Scripts & AI Automation Tools
+# sintana — M365 Admin Scripts
 
-> **M365テナント管理・Power Automate・AI業務自動化のPowerShellスクリプト集。情シス担当者・M365エンジニア向け。**
+> **Microsoft 365テナント管理の実務で使えるPowerShellスクリプト集。情シス担当者・M365エンジニア向け。**
 
 [![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)](https://github.com/PowerShell/PowerShell)
 [![Microsoft Graph](https://img.shields.io/badge/Microsoft%20Graph-SDK-0078D4)](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/)
@@ -8,15 +8,25 @@
 
 ---
 
-## 概要
+## 収録スクリプト
 
-IT業界20年のM365テクニカルサポート シニアエンジニアが、**実務で繰り返し使うスクリプトを公開**しているリポジトリです。
+### m365-admin-scripts/users/
 
-- Graph PowerShell SDK を使ったユーザー管理自動化
-- Microsoft 365 セキュリティ設定の一括適用
-- ライセンス管理・幽霊アカウント検出
+| ファイル | 概要 |
+|----------|------|
+| `Get-InactiveUsers.ps1` | 指定日数以上サインインしていないユーザーを検出してCSV出力（幽霊アカウント棚卸し） |
 
-すべてのスクリプトは実際のM365テナント運用で検証済みです。
+### m365-admin-scripts/security/
+
+| ファイル | 概要 |
+|----------|------|
+| `Get-MFAStatus.ps1` | 全ユーザーのMFA登録状況を一覧出力（未設定者の特定・監査用） |
+
+### m365-admin-scripts/license/
+
+| ファイル | 概要 |
+|----------|------|
+| `Get-M365LicenseReport.ps1` | テナント全ライセンスの使用状況レポートを出力（過剰購入・未使用の特定） |
 
 ---
 
@@ -24,41 +34,20 @@ IT業界20年のM365テクニカルサポート シニアエンジニアが、**
 
 ```
 sintana/
-├── users/          # ユーザー管理（作成・無効化・ライセンス付与）
-├── security/       # セキュリティ設定（MFA・条件付きアクセス）
-├── license/        # ライセンス管理（棚卸し・一括付与・剥奪）
-├── CONTRIBUTING.md # コントリビュートガイド
-├── requirements.md # 実行環境・依存モジュール
-└── README.md       # 本ファイル
+├── README.md
+└── m365-admin-scripts/
+    ├── CONTRIBUTING.md
+    ├── requirements.md
+    ├── users/
+    │   ├── Get-InactiveUsers.ps1
+    │   └── README.md
+    ├── security/
+    │   ├── Get-MFAStatus.ps1
+    │   └── README.md
+    └── license/
+        ├── Get-M365LicenseReport.ps1
+        └── README.md
 ```
-
----
-
-## 主要スクリプト
-
-### users/
-
-| ファイル | 概要 |
-|----------|------|
-| `Disable-RetiredUser.ps1` | 退職者アカウントの無効化＋サインインセッション即時失効 |
-| `Get-InactiveUsers.ps1` | 90日以上未ログインのユーザーをCSV出力（幽霊アカウント検出） |
-| `Set-BulkLicense.ps1` | CSVからライセンスを一括付与・剥奪 |
-| `New-UserOnboarding.ps1` | 新入社員アカウント作成＋グループ追加＋ライセンス付与の一括処理 |
-
-### security/
-
-| ファイル | 概要 |
-|----------|------|
-| `Enable-MFAForAll.ps1` | 全ユーザーのMFA強制有効化 |
-| `Get-MFAStatus.ps1` | MFA登録状況の一覧出力 |
-| `New-BreakGlassAccount.ps1` | 緊急アクセス（Break Glass）アカウントの作成 |
-
-### license/
-
-| ファイル | 概要 |
-|----------|------|
-| `Get-LicenseInventory.ps1` | テナント全ライセンスの使用状況サマリー出力 |
-| `Remove-UnusedLicense.ps1` | 90日間未使用ライセンスの検出・剥奪候補リスト出力 |
 
 ---
 
@@ -67,45 +56,40 @@ sintana/
 ```powershell
 # 必要モジュールのインストール
 Install-Module Microsoft.Graph -Scope CurrentUser -Force
-Install-Module AzureAD -Scope CurrentUser -Force  # 一部スクリプトで使用
 
 # 接続（テナント管理者権限が必要）
 Connect-MgGraph -Scopes "User.ReadWrite.All", "Directory.ReadWrite.All", "AuditLog.Read.All"
 ```
 
-詳細は [requirements.md](requirements.md) を参照してください。
+詳細は [requirements.md](m365-admin-scripts/requirements.md) を参照してください。
 
 ---
 
 ## 使い方（例）
 
 ```powershell
-# 退職者を一括処理（CSVでUPNリストを渡す）
-.\users\Disable-RetiredUser.ps1 -CsvPath ".\retirement_list.csv"
+# 90日以上サインインしていないユーザーを検出
+.\m365-admin-scripts\users\Get-InactiveUsers.ps1 -InactiveDays 90 -OutputPath ".\inactive_users.csv"
 
-# 幽霊アカウントを検出してCSV出力
-.\users\Get-InactiveUsers.ps1 -InactiveDays 90 -OutputPath ".\inactive_users.csv"
+# MFA登録状況を一覧出力
+.\m365-admin-scripts\security\Get-MFAStatus.ps1
 
-# ライセンス棚卸し
-.\license\Get-LicenseInventory.ps1
+# ライセンス使用状況レポートを出力
+.\m365-admin-scripts\license\Get-M365LicenseReport.ps1
 ```
 
 ---
 
-## AI業務自動化サービス
+## 関連記事
 
-スクリプトのカスタマイズや、Power Automate・Copilotを使った業務自動化の構築支援も行っています。
-
-🔗 [ポートフォリオ・実績](https://sintana.site/portfolio/)
-🔗 [AI業務自動化サービス（ここナラ）](https://coconala.com/services/4123087)
-📺 [YouTube: Microsoft 365 実務ガイド](https://youtube.com/@m365guidejp)
+📝 [Graph PowerShellでM365ユーザー管理を自動化する実践ガイド（Qiita）](https://qiita.com/SintanaProduction)
 
 ---
 
 ## ライセンス
 
-MIT License — 改変・商用利用自由。スクリプトは自己責任でご使用ください。本番環境での実行前に必ずテストテナントで動作確認してください。
+MIT License — 改変・商用利用自由。本番環境での実行前に必ずテストテナントで動作確認してください。
 
 ---
 
-**SiNTANA Production** | sintana.site
+**SiNTANA Production** | [sintana.site/portfolio/](https://sintana.site/portfolio/) | [YouTube: M365実務ガイド](https://youtube.com/@m365guidejp)
