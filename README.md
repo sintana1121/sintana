@@ -1,114 +1,111 @@
-# 🚀 Sintana Production | M365 Business Automation & AI Implementation
+# sintana — M365 Admin Scripts & AI Automation Tools
 
-**「あの人がいないと業務が回らない」という属人化を、AIと仕組みで終わらせる。**
+> **M365テナント管理・Power Automate・AI業務自動化のPowerShellスクリプト集。情シス担当者・M365エンジニア向け。**
 
-20年のITキャリア、7年にわたるMicrosoft 365専門サポートの現場経験、そして実戦投入されたAI実装力。  
-私は、単なるコードを売るのではなく、**「AIが正しく自走し、誰が運用しても同じ結果が出る堅牢な管理基盤」**を提供します。
-
----
-
-## 🛡️ Core Expertise（3層の知見）
-
-| Layer | Years | Focus |
-|-------|-------|-------|
-| **Physical Infrastructure** | 10年 | データセンター構築、LAN/基地局施工。現場の汗とリスク管理。 |
-| **M365 Platform** | 7年 | 元Microsoftテクニカルサポート。管理センター、ドメイン、権限設計。 |
-| **AI Implementation** | Now | Copilot Studio × SharePoint RAG。実務に溶け込むAI活用。 |
+[![PowerShell](https://img.shields.io/badge/PowerShell-5.1%2B-blue)](https://github.com/PowerShell/PowerShell)
+[![Microsoft Graph](https://img.shields.io/badge/Microsoft%20Graph-SDK-0078D4)](https://learn.microsoft.com/ja-jp/powershell/microsoftgraph/)
+[![License: MIT](https://img.shields.io/badge/License-MIT-green)](LICENSE)
 
 ---
 
-## 📦 Key Repositories
+## 概要
 
-| Repository | Description | Status |
-|:-----------|:------------|:-------|
-| [**m365-admin-scripts**](./m365-admin-scripts) | AI活用のための土台を作る、実務直結のGraph PowerShellスクリプト集 | **Production Ready** |
+IT業界20年のM365テクニカルサポート シニアエンジニアが、**実務で繰り返し使うスクリプトを公開**しているリポジトリです。
 
----
+- Graph PowerShell SDK を使ったユーザー管理自動化
+- Microsoft 365 セキュリティ設定の一括適用
+- ライセンス管理・幽霊アカウント検出
 
-## 🤖 AI Implementation Cases（実運用中）
-
-私のチームでは、以下のAIエージェントを**実務で3ヶ月以上運用**しています。
-
-| Agent | Purpose | Result |
-|-------|---------|--------|
-| **調査官（Investigator）** | SharePoint RAGによる社内ナレッジ検索 | 調査時間 15分→5分（60%削減） |
-| **校正官（Editor）** | メール品質チェック＋敬語補正 | 作成時間30%削減、新人教育コスト削減 |
-| **分析官（Site Analyst）** | インシデント調査用サイト分析 | 障害特定時間50%削減 |
-| **収集官（Prompt Collector）** | 有効プロンプトの自動資産化 | ナレッジ蓄積の自動化 |
-
-> 詳細は [Qiita記事](https://qiita.com/SintanaProduction) で公開中
+すべてのスクリプトは実際のM365テナント運用で検証済みです。
 
 ---
 
-## 📝 Technical Insights
+## ディレクトリ構成
 
-### Qiita: [@SintanaProduction](https://qiita.com/SintanaProduction)
-
-| Article | Topic |
-|---------|-------|
-| **【実録】監査・運用に耐える承認フロー設計** | 「30分で作ったフロー」がなぜ現場でゴミになるのか？ |
-| **Copilot Studio × SharePoint RAG 実運用記録** | 調査時間60%削減の裏側（Coming Soon） |
-| **メール校正AIスーパーバイザー実装ガイド** | 新人の「送信ボタンを押す恐怖」を消す（Coming Soon） |
-
----
-
-## 💼 Services（スポット支援）
-
-| Service | Price |
-|---------|-------|
-| DNS設定・M365独自ドメイン連携 | ¥30,000〜 |
-| Power Automate 承認フロー構築 | ¥100,000〜 |
-| SharePoint 業務基盤構築 | ¥300,000〜 |
-| M365トラブルシューティング | ¥50,000〜/件 |
-
-> 継続サポートは月額 ¥4,980〜
+```
+sintana/
+├── users/          # ユーザー管理（作成・無効化・ライセンス付与）
+├── security/       # セキュリティ設定（MFA・条件付きアクセス）
+├── license/        # ライセンス管理（棚卸し・一括付与・剥奪）
+├── CONTRIBUTING.md # コントリビュートガイド
+├── requirements.md # 実行環境・依存モジュール
+└── README.md       # 本ファイル
+```
 
 ---
 
-## 🎁 Free Resources
+## 主要スクリプト
 
-### 【無料配布中】属人化解消スターターキット
+### users/
 
-- ✅ 属人化ゼロの教科書（第1章）
-- ✅ AI業務活用プロンプト5選
-- ✅ 属人化診断チェックリスト
-
-👉 **[sintana.site で今すぐ受け取る](https://sintana.site)**
-
----
-
-### 【期間限定】生成AIパスポート試験 対策資料
-
-> 🎯 **Xフォロワー限定特典**
-
-生成AIの基礎から実務活用まで、試験対策に使える学習資料を無料配布中。
-
-**受け取り方:**
-1. [@sintana2222](https://twitter.com/sintana2222) をフォロー
-2. 固定ツイートをRT
-3. DMで「AI資料希望」と送信
-
----
-
-## 📫 Connect
-
-| Platform | Link |
+| ファイル | 概要 |
 |----------|------|
-| **Web** | [sintana.site](https://sintana.site) |
-| **X (Twitter)** | [@sintana2222](https://twitter.com/sintana2222) |
-| **Qiita** | [@SintanaProduction](https://qiita.com/SintanaProduction) |
-| **note** | [SintanaProduction](https://note.com/sintana_prod) |
+| `Disable-RetiredUser.ps1` | 退職者アカウントの無効化＋サインインセッション即時失効 |
+| `Get-InactiveUsers.ps1` | 90日以上未ログインのユーザーをCSV出力（幽霊アカウント検出） |
+| `Set-BulkLicense.ps1` | CSVからライセンスを一括付与・剥奪 |
+| `New-UserOnboarding.ps1` | 新入社員アカウント作成＋グループ追加＋ライセンス付与の一括処理 |
+
+### security/
+
+| ファイル | 概要 |
+|----------|------|
+| `Enable-MFAForAll.ps1` | 全ユーザーのMFA強制有効化 |
+| `Get-MFAStatus.ps1` | MFA登録状況の一覧出力 |
+| `New-BreakGlassAccount.ps1` | 緊急アクセス（Break Glass）アカウントの作成 |
+
+### license/
+
+| ファイル | 概要 |
+|----------|------|
+| `Get-LicenseInventory.ps1` | テナント全ライセンスの使用状況サマリー出力 |
+| `Remove-UnusedLicense.ps1` | 90日間未使用ライセンスの検出・剥奪候補リスト出力 |
 
 ---
 
-## 🧠 Philosophy
+## 実行環境
 
-> 礼儀正しいお世辞よりも、実用性と論理に基づいた「動く解決策」を優先します。
+```powershell
+# 必要モジュールのインストール
+Install-Module Microsoft.Graph -Scope CurrentUser -Force
+Install-Module AzureAD -Scope CurrentUser -Force  # 一部スクリプトで使用
 
-- **PoC（概念実証）ではなく、Production（本番運用）**
-- **コードを売るのではなく、仕組みを売る**
-- **AIは魔法ではない。泥臭いデータ整備と教育が9割**
+# 接続（テナント管理者権限が必要）
+Connect-MgGraph -Scopes "User.ReadWrite.All", "Directory.ReadWrite.All", "AuditLog.Read.All"
+```
+
+詳細は [requirements.md](requirements.md) を参照してください。
 
 ---
 
-© 2026 Sintana Production. Built for the AI Era.
+## 使い方（例）
+
+```powershell
+# 退職者を一括処理（CSVでUPNリストを渡す）
+.\users\Disable-RetiredUser.ps1 -CsvPath ".\retirement_list.csv"
+
+# 幽霊アカウントを検出してCSV出力
+.\users\Get-InactiveUsers.ps1 -InactiveDays 90 -OutputPath ".\inactive_users.csv"
+
+# ライセンス棚卸し
+.\license\Get-LicenseInventory.ps1
+```
+
+---
+
+## AI業務自動化サービス
+
+スクリプトのカスタマイズや、Power Automate・Copilotを使った業務自動化の構築支援も行っています。
+
+🔗 [ポートフォリオ・実績](https://sintana.site/portfolio/)
+🔗 [AI業務自動化サービス（ここナラ）](https://coconala.com/services/4123087)
+📺 [YouTube: Microsoft 365 実務ガイド](https://youtube.com/@m365guidejp)
+
+---
+
+## ライセンス
+
+MIT License — 改変・商用利用自由。スクリプトは自己責任でご使用ください。本番環境での実行前に必ずテストテナントで動作確認してください。
+
+---
+
+**SiNTANA Production** | sintana.site
